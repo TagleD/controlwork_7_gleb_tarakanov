@@ -40,3 +40,14 @@ def update_view(request: WSGIRequest, pk):
 
     form = RecordForm(instance=record)
     return render(request, 'record_update.html', context={'form': form, 'record': record})
+
+
+def delete_view(request, pk):
+    record = get_object_or_404(Record, pk=pk)
+    return render(request, 'confirm_delete.html', context={'record': record})
+
+
+def confirm_delete(request, pk):
+    record = Record.objects.get(pk=pk)
+    record.delete()
+    return redirect('index')
