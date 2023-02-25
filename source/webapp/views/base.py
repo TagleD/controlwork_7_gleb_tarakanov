@@ -7,6 +7,6 @@ from webapp.models import Record, StatusChoice
 
 
 def index_view(request):
-    records = Record.objects.exclude(status=StatusChoice.ACTIVE[0]).order_by('created_at')
+    records = Record.objects.order_by('created_at').exclude(status='blocked')
     context = {'records': records}
     return render(request, 'index.html', context=context)
