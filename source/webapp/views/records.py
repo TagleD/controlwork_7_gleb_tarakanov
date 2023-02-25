@@ -1,6 +1,5 @@
 from django.core.handlers.wsgi import WSGIRequest
 from django.shortcuts import render, redirect, get_object_or_404
-
 from webapp.forms import RecordForm
 from webapp.models import StatusChoice, Record
 
